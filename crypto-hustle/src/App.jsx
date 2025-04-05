@@ -54,22 +54,22 @@ function App() {
         {searchInput.length > 0
           ? filteredResults.map((coin) =>
               list.Data[coin].PlatformType === "blockchain" ? (
-                <CoinInfo
+                <CoinInfo key={list.Data[coin].FullName}
                   image={list.Data[coin].ImageUrl}
                   name={list.Data[coin].FullName}
                   symbol={list.Data[coin].Symbol}
                 />
-              ) : null
+              ) : <p>loading..</p>
             )
           : list &&
             Object.entries(list.Data).map(([coin]) =>
               list.Data[coin].PlatformType === "blockchain" ? (
-                <CoinInfo
+                <CoinInfo key={list.Data[coin].FullName}
                   image={list.Data[coin].ImageUrl}
                   name={list.Data[coin].FullName}
                   symbol={list.Data[coin].Symbol}
                 />
-              ) : null
+              ) : <p>loading..</p>
             )}
       </ul>
     </div>
