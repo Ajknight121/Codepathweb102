@@ -32,8 +32,7 @@ function App() {
       console.log('fetching all')
       try {
 
-        const response = await fetch(
-          "https://min-api.cryptocompare.com/data/all/coinlist?&api_key" + API_KEY, { signal: controller.signal }
+        const response = await fetch("https://min-api.cryptocompare.com/data/top/totaltoptiervol?limit=5&assetClass=ALL&tsym=usd&api_key=" + API_KEY, { signal: controller.signal }
         );
         const json = await response.json();
         setList(json);
@@ -70,8 +69,7 @@ function App() {
                 />
               ) : <p>loading..</p>
             )
-          : list &&
-            Object.entries(list.Data).map(([coin], index) =>
+          : list && Object.entries(list.Data).map(([coin], index) =>
               list.Data[coin].PlatformType === "blockchain" ? (
                 <CoinInfo key={index+list.Data[coin].FullName}
                   image={list.Data[coin].ImageUrl}
